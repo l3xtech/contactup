@@ -3,70 +3,14 @@ contatos
 """
 
 import copy
+
+import create
+
 db_contatos = []
 id_generator = (n for n in range(1, 1000000))
-modelo_contato = {
-    'id': 'add',
-    'prefixo': 'add',
-    'nome': 'add',
-    'nome_do_meio': 'add',
-    'sobrenome': 'add',
-    'nome_completo': 'add',
-    'sufixo': 'add',
-    'apelido': 'add',
-    'nickname': 'add',
-
-    'trabalhos': [
-        {'empresa': 'add',
-        'cargo': 'add',
-        'departamento': 'add',
-        'data_entrada': 'add',
-        'data_saida': 'add'},
-    ],
-
-    'emails': [
-        {'email': 'add',
-        'tag_email': 'add'},
-    ],
-
-    'telefones': [
-        {'codigo_pais': 'add',
-        'telefone': 'add',
-        'tag_telefone': 'add'},
-    ],
-
-    'enderecos': [
-        {'pais': 'add',
-         'endereco': 'add',
-         'cidade': 'add',
-         'estado': 'add',
-         'cep': 'add',
-         'tag_endereco': 'add'},
-    ],
-    'website': 'add',
-    'aniversario': 'add',
-
-    'datas': [
-        {'tag_data': 'add',
-         'data': 'add'},
-    ],
-
-    'pessoas_relacionadas': [
-        {'id_relacao': 'add',
-         'tipo_relacao': 'add',
-         'observacao_relacao': 'add'},
-    ],
-
-    'historico': [
-        {'historico_data': 'add',
-         'historico_titulo': 'add',
-         'historico_observacao': 'add'},
-    ]
-}
-
 
 # Realiza cópia profunda, sem referenciar valores entre os objetos.
-novo_contato = copy.deepcopy(modelo_contato)
+novo_contato = copy.deepcopy(create.contact_model)
 
 # Cria um novo contato no db
 def criar_novo_contato(dicionario, lista):
@@ -147,9 +91,9 @@ for contato in db_contatos:
             print(f'{chave}: {valor}')
 
 # pega o valor de uma chave no dicionario
-#  print(modelo_contato.get('nome'))
+#  print(contact_model.get('nome'))
 # Igual anterior porem o segundo argumento é a saida caso não encontre a chave.
-#  print(modelo_contato.get('nome', 'Não existe'))
+#  print(contact_model.get('nome', 'Não existe'))
 
 
 # Atualiza / Edita valores em um dicionario.
@@ -178,12 +122,12 @@ for contato in db_contatos:
 ### COMPRIMENTO - Metodo len()
 
 # Comprimento de telefones. Quantos dicionarios de telefone cadastrados.
-#  print(len(modelo_contato['telefones']))
+#  print(len(contact_model['telefones']))
 # Comprimento do dicionario telefone. Numero de campos no modelo.
-#  print(len(modelo_contato['telefones'][0]))
+#  print(len(contact_model['telefones'][0]))
 
 # Itera / Percorre todo o dicionario mostrando chave e valor.
-#  for chave, valor in modelo_contato.items():
+#  for chave, valor in contact_model.items():
     #  print(chave, valor)
 
 #  print()
