@@ -1,11 +1,16 @@
-import create
+from create import id_generator
+
+balloon_dict = {}
+name_1 = ''
+name_2 = ''
+name_3 = ''
 
 # Cria um novo contato no db
 def create_new_contact(dicionario, lista):
-    balloon_dict = {}
-    name_1 = ''
-    name_2 = ''
-    name_3 = ''
+    global balloon_dict
+    global name_1
+    global name_2
+    global name_3
 
     for chave, valor in dicionario.items():
 
@@ -22,7 +27,7 @@ def create_new_contact(dicionario, lista):
             balloon_dict[chave] = novo_valor
 
         elif chave == 'id':
-            balloon_dict[chave] = next(create.id_generator)
+            balloon_dict[chave] = next(id_generator)
 
         elif chave == 'nome':
             novo_valor = input(f'Digite o {chave} do novo contato: ')
@@ -59,7 +64,9 @@ def create_new_contact(dicionario, lista):
 
     lista.append(balloon_dict)
     balloon_dict = {}
-
+    name_1 = ''
+    name_2 = ''
+    name_3 = ''
 
 
 def show_list_of_contacts(cont_list_db):
