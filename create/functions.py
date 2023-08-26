@@ -59,3 +59,19 @@ def create_new_contact(dicionario, lista):
 
     lista.append(new_contact)
 
+
+
+def show_list_of_contacts(cont_list_db):
+    for contato in cont_list_db:
+        for chave, valor in contato.items():
+            if isinstance(valor, list):
+                print()
+                print(f'---------{chave}----------')
+                for item in valor:
+                    for sub_chave, sub_valor in item.items():
+                        print(f'{sub_chave}: {sub_valor}')
+            else:
+                if valor == '':
+                    continue
+                print(f'{chave}: {valor}')
+
