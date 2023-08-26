@@ -2,11 +2,11 @@
 main
 """
 # System imports
-import create
+from create import create_new_contact, show_list_of_contacts, new_contact, list_of_contacts
 
-create.create_new_contact(create.new_contact, create.list_of_contacts)
+create_new_contact(new_contact, list_of_contacts)
 
-create.create_new_contact(create.new_contact, create.list_of_contacts)
+create_new_contact(new_contact, list_of_contacts)
 
-create.show_list_of_contacts(create.list_of_contacts)
+show_list_of_contacts(list_of_contacts)
 
