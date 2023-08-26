@@ -2,10 +2,10 @@ import create
 
 # Cria um novo contato no db
 def create_new_contact(dicionario, lista):
-    new_contact = {}
-    nome1 = ''
-    nome2 = ''
-    nome3 = ''
+    balloon_dict = {}
+    name_1 = ''
+    name_2 = ''
+    name_3 = ''
 
     for chave, valor in dicionario.items():
 
@@ -19,45 +19,46 @@ def create_new_contact(dicionario, lista):
 
                 novo_valor.append(novo_item)
 
-            new_contact[chave] = novo_valor
+            balloon_dict[chave] = novo_valor
 
         elif chave == 'id':
-            new_contact[chave] = next(create.id_generator)
+            balloon_dict[chave] = next(create.id_generator)
 
         elif chave == 'nome':
             novo_valor = input(f'Digite o {chave} do novo contato: ')
-            nome1 = novo_valor
-            new_contact[chave] = novo_valor
+            name_1 = novo_valor
+            balloon_dict[chave] = novo_valor
 
         elif chave == 'nome_do_meio':
             novo_valor = input(f'Digite o {chave} do novo contato: ')
-            nome2 = novo_valor
-            new_contact[chave] = novo_valor
+            name_2 = novo_valor
+            balloon_dict[chave] = novo_valor
 
         elif chave == 'sobrenome':
             novo_valor = input(f'Digite o {chave} do novo contato: ')
-            nome3 = novo_valor
-            new_contact[chave] = novo_valor
+            name_3 = novo_valor
+            balloon_dict[chave] = novo_valor
 
         elif chave == 'nome_completo':
 
-            if nome1 != '' and nome2 == '' and nome3 == '':
-                new_contact[chave] = nome1
-            elif nome1 != '' and nome2 != '' and nome3 == '':
-                new_contact[chave] = f'{nome1} {nome2}'
-            elif nome1 != '' and nome2 == '' and nome3 != '':
-                new_contact[chave] = f'{nome1} {nome3}'
-            elif nome1 != '' and nome2 != '' and nome3 != '':
-                new_contact[chave] = f'{nome1} {nome2} {nome3}'
+            if name_1 != '' and name_2 == '' and name_3 == '':
+                balloon_dict[chave] = name_1
+            elif name_1 != '' and name_2 != '' and name_3 == '':
+                balloon_dict[chave] = f'{name_1} {name_2}'
+            elif name_1 != '' and name_2 == '' and name_3 != '':
+                balloon_dict[chave] = f'{name_1} {name_3}'
+            elif name_1 != '' and name_2 != '' and name_3 != '':
+                balloon_dict[chave] = f'{name_1} {name_2} {name_3}'
             else:
-                new_contact[chave] = ''
+                balloon_dict[chave] = ''
 
         else:
             novo_valor = input(f'Digite o {chave} do novo contato: ')
-            new_contact[chave] = novo_valor
+            balloon_dict[chave] = novo_valor
 
 
-    lista.append(new_contact)
+    lista.append(balloon_dict)
+    balloon_dict = {}
 
 
 
