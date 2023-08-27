@@ -19,6 +19,48 @@ def populate_list(key, primary_list, variable_to_insert):
 
     variable_to_insert[key] = secundary_list
 
+
+def populate_value_of_key(key, value, variable_to_insert):
+
+    global name_1
+    global name_2
+    global name_3
+
+    if key == 'id':
+        variable_to_insert[key] = next(id_generator)
+
+    elif key == 'nome':
+        new_value = input(f'Digite o {key} do novo contato: ')
+        name_1 = new_value
+        variable_to_insert[key] = new_value
+
+    elif key == 'nome_do_meio':
+        new_value = input(f'Digite o {key} do novo contato: ')
+        name_2 = new_value
+        variable_to_insert[key] = new_value
+
+    elif key == 'sobrenome':
+        new_value = input(f'Digite o {key} do novo contato: ')
+        name_3 = new_value
+        variable_to_insert[key] = new_value
+
+    elif key == 'nome_completo':
+
+        if name_1 != '' and name_2 == '' and name_3 == '':
+            variable_to_insert[key] = name_1
+        elif name_1 != '' and name_2 != '' and name_3 == '':
+            variable_to_insert[key] = f'{name_1} {name_2}'
+        elif name_1 != '' and name_2 == '' and name_3 != '':
+            variable_to_insert[key] = f'{name_1} {name_3}'
+        elif name_1 != '' and name_2 != '' and name_3 != '':
+            variable_to_insert[key] = f'{name_1} {name_2} {name_3}'
+        else:
+            variable_to_insert[key] = ''
+
+    else:
+        new_value = input(f'Digite o {key} do novo contato: ')
+        variable_to_insert[key] = new_value
+
 # Cria um novo contato no db
 def create_new_contact(dicionario, lista):
     global balloon_dict
@@ -30,42 +72,8 @@ def create_new_contact(dicionario, lista):
 
         if isinstance(valor, list):
             populate_list(chave, valor, balloon_dict)
-
-        elif chave == 'id':
-            balloon_dict[chave] = next(id_generator)
-
-        elif chave == 'nome':
-            novo_valor = input(f'Digite o {chave} do novo contato: ')
-            name_1 = novo_valor
-            balloon_dict[chave] = novo_valor
-
-        elif chave == 'nome_do_meio':
-            novo_valor = input(f'Digite o {chave} do novo contato: ')
-            name_2 = novo_valor
-            balloon_dict[chave] = novo_valor
-
-        elif chave == 'sobrenome':
-            novo_valor = input(f'Digite o {chave} do novo contato: ')
-            name_3 = novo_valor
-            balloon_dict[chave] = novo_valor
-
-        elif chave == 'nome_completo':
-
-            if name_1 != '' and name_2 == '' and name_3 == '':
-                balloon_dict[chave] = name_1
-            elif name_1 != '' and name_2 != '' and name_3 == '':
-                balloon_dict[chave] = f'{name_1} {name_2}'
-            elif name_1 != '' and name_2 == '' and name_3 != '':
-                balloon_dict[chave] = f'{name_1} {name_3}'
-            elif name_1 != '' and name_2 != '' and name_3 != '':
-                balloon_dict[chave] = f'{name_1} {name_2} {name_3}'
-            else:
-                balloon_dict[chave] = ''
-
         else:
-            novo_valor = input(f'Digite o {chave} do novo contato: ')
-            balloon_dict[chave] = novo_valor
-
+            populate_value_of_key(chave, valor, balloon_dict)
 
     lista.append(balloon_dict)
     balloon_dict = {}
