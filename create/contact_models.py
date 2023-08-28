@@ -62,4 +62,4 @@ contact_model = {
 }
 
 # Realiza cópia profunda, sem referenciar valores entre os objetos.
-empty_contact = copy.deepcopy(contact_model)
+new_contact = copy.deepcopy(contact_model)

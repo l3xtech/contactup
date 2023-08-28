@@ -1,4 +1,4 @@
-from create import id_generator
+from create import id_generator, list_of_contacts
 
 balloon_dict = {}
 name_1 = ''
@@ -56,27 +56,31 @@ def populate_value_of_key(key, value, variable_to_insert):
             new_value = input(f'Digite o {key} do novo contato: ')
             variable_to_insert[key] = new_value
 
-# Cria um novo contato no db
-def create_new_contact(dicionario, lista):
-    global balloon_dict
-    global name_1
-    global name_2
-    global name_3
+def create_in_list(lista):
 
-    for chave, valor in dicionario.items():
+    def create_by_dict(dicionario):
+        global balloon_dict
+        global name_1
+        global name_2
+        global name_3
 
-        if isinstance(valor, list):
-            populate_list(chave, valor, balloon_dict)
-        else:
-            populate_value_of_key(chave, valor, balloon_dict)
+        for chave, valor in dicionario.items():
 
-    lista.append(balloon_dict)
-    balloon_dict = {}
-    name_1 = ''
-    name_2 = ''
-    name_3 = ''
+            if isinstance(valor, list):
+                populate_list(chave, valor, balloon_dict)
+            else:
+                populate_value_of_key(chave, valor, balloon_dict)
+
+        lista.append(balloon_dict)
+        balloon_dict = {}
+        name_1 = ''
+        name_2 = ''
+        name_3 = ''
+
+    return create_by_dict
 
 
+create_in_db = create_in_list(list_of_contacts)
 
 def show_list_of_contacts(cont_list_db):
     for contato in cont_list_db:
