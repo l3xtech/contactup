@@ -26,40 +26,35 @@ def populate_value_of_key(key, value, variable_to_insert):
     global name_2
     global name_3
 
-    if key == 'id':
-        variable_to_insert[key] = next(id_generator)
-
-    elif key == 'nome':
-        new_value = input(f'Digite o {key} do novo contato: ')
-        name_1 = new_value
-        variable_to_insert[key] = new_value
-
-    elif key == 'nome_do_meio':
-        new_value = input(f'Digite o {key} do novo contato: ')
-        name_2 = new_value
-        variable_to_insert[key] = new_value
-
-    elif key == 'sobrenome':
-        new_value = input(f'Digite o {key} do novo contato: ')
-        name_3 = new_value
-        variable_to_insert[key] = new_value
-
-    elif key == 'nome_completo':
-
-        if name_1 != '' and name_2 == '' and name_3 == '':
-            variable_to_insert[key] = name_1
-        elif name_1 != '' and name_2 != '' and name_3 == '':
-            variable_to_insert[key] = f'{name_1} {name_2}'
-        elif name_1 != '' and name_2 == '' and name_3 != '':
-            variable_to_insert[key] = f'{name_1} {name_3}'
-        elif name_1 != '' and name_2 != '' and name_3 != '':
-            variable_to_insert[key] = f'{name_1} {name_2} {name_3}'
-        else:
-            variable_to_insert[key] = ''
-
-    else:
-        new_value = input(f'Digite o {key} do novo contato: ')
-        variable_to_insert[key] = new_value
+    match key:
+        case 'id':
+            variable_to_insert[key] = next(id_generator)
+        case 'nome':
+            new_value = input(f'Digite o {key} do novo contato: ')
+            name_1 = new_value
+            variable_to_insert[key] = new_value
+        case 'nome_do_meio':
+            new_value = input(f'Digite o {key} do novo contato: ')
+            name_2 = new_value
+            variable_to_insert[key] = new_value
+        case 'sobrenome':
+            new_value = input(f'Digite o {key} do novo contato: ')
+            name_3 = new_value
+            variable_to_insert[key] = new_value
+        case 'nome_completo':
+            if name_1 != '' and name_2 == '' and name_3 == '':
+                variable_to_insert[key] = name_1
+            elif name_1 != '' and name_2 != '' and name_3 == '':
+                variable_to_insert[key] = f'{name_1} {name_2}'
+            elif name_1 != '' and name_2 == '' and name_3 != '':
+                variable_to_insert[key] = f'{name_1} {name_3}'
+            elif name_1 != '' and name_2 != '' and name_3 != '':
+                variable_to_insert[key] = f'{name_1} {name_2} {name_3}'
+            else:
+                variable_to_insert[key] = ''
+        case _:
+            new_value = input(f'Digite o {key} do novo contato: ')
+            variable_to_insert[key] = new_value
 
 # Cria um novo contato no db
 def create_new_contact(dicionario, lista):
